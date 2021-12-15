@@ -1,5 +1,8 @@
 import React from 'react'
 import Header from '../components/Header'
+import Display from '../components/Display'
+import Result from '../components/Result'
+import Interface from '../components/Interface'
 
 const Main = () => {
   return (
@@ -7,7 +10,11 @@ const Main = () => {
       <header>
         <Header />
       </header>
-      <main>메인입니다.</main>
+      <main>
+        <Display />
+        <Result />
+        <Interface />
+      </main>
     </>
   )
 }
