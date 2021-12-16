@@ -1,9 +1,10 @@
 import React from 'react'
+import '../Calculator.css'
 
 const Result = () => {
   return (
     <>
-      <div>result</div>
+      <div className="result">result</div>
     </>
   )
 }

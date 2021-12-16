@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import Display from '../components/Display'
 import Result from '../components/Result'
 import Interface from '../components/Interface'
+import '../Calculator.css'
 
 const Main = () => {
   return (
@@ -10,7 +11,7 @@ const Main = () => {
       <header>
         <Header />
       </header>
-      <main>
+      <main className="calculator-wrapper">
         <Display />
         <Result />
         <Interface />
