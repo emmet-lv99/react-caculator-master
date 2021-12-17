@@ -13,23 +13,26 @@ import '../Calculator.css'
  *Todo 오퍼레이터가 있을 경우 오퍼레이터를 클릭하면 value1과 value2를 연산한다.
  *Todo 가르친다면...?
  *Todo 모든 변수를 초기화 하는 c 를 제일 먼저 구현할 것같다
- *
+ *Todo del 기능은 가장 마지막에 구현
+ *Todo 키보드 키 이벤트를 구현하려면 display가 input이어야 한다.
+ *Todo
  */
 
 const Main = () => {
   const [result, setResult] = useState(0)
   const [display, setDisplay] = useState('')
   const [operator, setOperator] = useState('')
-  const [value1, setValue1] = useState(0)
-  const [value2, setValue2] = useState(0)
+  const [value1, setValue1] = useState(null)
+  const [value2, setValue2] = useState(null)
 
   const emitInterfaceDel = () => {
-    if (value2 > 0) {
+    if (value2 !== null && value2 > 0) {
       setValue2(Number(value2.toString().slice(0, -1)))
       setDisplay(display.slice(0, -1))
     } else if (operator) {
       setDisplay(display.slice(0, -1))
       setOperator('')
+      setValue2(null)
     } else {
       setValue1(Number(value1.toString().slice(0, -1)))
       setDisplay(display.slice(0, -1))
@@ -45,7 +48,7 @@ const Main = () => {
   }
   const emitInterfaceVal = num => {
     setDisplay(display + num.toString())
-    if (operator) {
+    if (operator && value1 > 0) {
       setValue2(value2 * 10 + num)
     } else {
       setValue1(value1 * 10 + num)
@@ -78,7 +81,7 @@ const Main = () => {
 
   const emitInterfaceOp = op => {
     if (operator) {
-      if (value2 >= 0) {
+      if (value2 !== null && value2 > 0) {
         makeResult()
         setDisplay(makeResult() + op)
       } else {
@@ -99,7 +102,6 @@ const Main = () => {
       setResult(makeResult())
     }
   }
-
   return (
     <>
       <header>

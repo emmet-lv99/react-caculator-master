@@ -17,6 +17,7 @@ const Interface = props => {
   const onClickDel = () => {
     if (props.emitInterfaceDel) props.emitInterfaceDel()
   }
+
   return (
     <>
       <div>
