@@ -70,3 +70,12 @@ button {
 .interface-item:last-child {
   border-right: none;
 }
+
+
+.interface-item:active {
+  background-color: #cbcbcb !important;
+}
+
+.interface-item.interface-item-operator:active {
+  background-color: #db8437 !important;
+}
