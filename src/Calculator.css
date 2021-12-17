@@ -1,11 +1,9 @@
-.calculator-wrapper {
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-}
-
 .display {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  flex: 1;
+  min-height: 80px;
   background-color: #4B4B4B;
   color: #fff;
   box-sizing: border-box;
@@ -13,8 +11,13 @@
   text-align: right;
   font-size: 20px;
   font-weight: 700;
-  line-height: 50px;
   padding: 20px 20px 10px;
+}
+
+.calculator-wrapper {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
 .result {
