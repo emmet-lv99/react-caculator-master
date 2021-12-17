@@ -88,9 +88,13 @@ const Main = () => {
         setDisplay(display.slice(0, -1) + op)
       }
     } else {
-      setDisplay(display + op)
+      if (value1 !== null && value1 > 0) {
+        setDisplay(display + op)
+        setOperator(op)
+      } else {
+        window.alert('숫자를 입력해주세요')
+      }
     }
-    setOperator(op)
   }
 
   const emitInterfaceEq = () => {
