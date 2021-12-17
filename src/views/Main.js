@@ -15,7 +15,7 @@ import '../Calculator.css'
  *Todo 모든 변수를 초기화 하는 c 를 제일 먼저 구현할 것같다
  *Todo del 기능은 가장 마지막에 구현
  *Todo 키보드 키 이벤트를 구현하려면 display가 input이어야 한다.
- *Todo
+ *Todo display에 기호가 제일 먼저 들어왔을 떄 처리
  */
 
 const Main = () => {
