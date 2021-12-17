@@ -7,6 +7,10 @@ const Interface = props => {
   const onClickOperator = op => {
     if (props.emitInterfaceOp) props.emitInterfaceOp(op)
   }
+
+  const onClickEq = () => {
+    if (props.emitInterfaceEq) props.emitInterfaceEq()
+  }
   return (
     <>
       <div>
@@ -16,7 +20,7 @@ const Interface = props => {
           <button className="interface-item">←</button>
           <button
             onClick={() => {
-              onClickOperator('/')
+              onClickOperator('÷')
             }}
             className="interface-item interface-item-operator"
           >
@@ -50,7 +54,7 @@ const Interface = props => {
           </button>
           <button
             onClick={() => {
-              onClickOperator('x')
+              onClickOperator('×')
             }}
             className="interface-item interface-item-operator"
           >
@@ -126,8 +130,22 @@ const Interface = props => {
           </button>
         </div>
         <div className="interface-row">
-          <button className="interface-item">0</button>
-          <button className="interface-item">＝</button>
+          <button
+            onClick={() => {
+              onClickNumber(0)
+            }}
+            className="interface-item"
+          >
+            0
+          </button>
+          <button
+            onClick={() => {
+              onClickEq()
+            }}
+            className="interface-item"
+          >
+            ＝
+          </button>
         </div>
       </div>
     </>
