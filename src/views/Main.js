@@ -18,11 +18,10 @@ const Main = () => {
   const [value2, setValue2] = useState(0)
 
   const emitInterfaceVal = num => {
-    console.log(num)
+    setDisplay(display + num.toString())
   }
-
   const emitInterfaceOp = op => {
-    console.log(op)
+    setDisplay(display + op)
   }
 
   return (
