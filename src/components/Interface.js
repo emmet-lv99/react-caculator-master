@@ -11,11 +11,16 @@ const Interface = props => {
   const onClickEq = () => {
     if (props.emitInterfaceEq) props.emitInterfaceEq()
   }
+  const onClickClear = () => {
+    if (props.emitInterfaceClear) props.emitInterfaceClear()
+  }
   return (
     <>
       <div>
         <div className="interface-row">
-          <button className="interface-item">C</button>
+          <button onClick={() => onClickClear()} className="interface-item">
+            C
+          </button>
           <button className="interface-item">.</button>
           <button className="interface-item">←</button>
           <button
