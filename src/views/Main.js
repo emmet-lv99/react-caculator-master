@@ -11,7 +11,8 @@ import '../Calculator.css'
  *Todo ++ -- 되는 문제 해결
  *Todo 오퍼레이터를 눌렀을 때 value1에 값이 저장되도록 한다.
  *Todo 오퍼레이터가 있을 경우 오퍼레이터를 클릭하면 value1과 value2를 연산한다.
- *
+ *Todo 가르친다면...?
+ *Todo 모든 변수를 초기화 하는 c 를 제일 먼저 구현할 것같다
  *
  */
 
@@ -21,6 +22,19 @@ const Main = () => {
   const [operator, setOperator] = useState('')
   const [value1, setValue1] = useState(0)
   const [value2, setValue2] = useState(0)
+
+  const emitInterfaceDel = () => {
+    if (value2 > 0) {
+      setValue2(Number(value2.toString().slice(0, -1)))
+      setDisplay(display.slice(0, -1))
+    } else if (operator) {
+      setDisplay(display.slice(0, -1))
+      setOperator('')
+    } else {
+      setValue1(Number(value1.toString().slice(0, -1)))
+      setDisplay(display.slice(0, -1))
+    }
+  }
 
   const emitInterfaceClear = () => {
     setResult(0)
@@ -99,6 +113,7 @@ const Main = () => {
           emitInterfaceOp={emitInterfaceOp}
           emitInterfaceEq={emitInterfaceEq}
           emitInterfaceClear={emitInterfaceClear}
+          emitInterfaceDel={emitInterfaceDel}
         />
       </main>
     </>

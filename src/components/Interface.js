@@ -14,6 +14,9 @@ const Interface = props => {
   const onClickClear = () => {
     if (props.emitInterfaceClear) props.emitInterfaceClear()
   }
+  const onClickDel = () => {
+    if (props.emitInterfaceDel) props.emitInterfaceDel()
+  }
   return (
     <>
       <div>
@@ -22,7 +25,9 @@ const Interface = props => {
             C
           </button>
           <button className="interface-item">.</button>
-          <button className="interface-item">←</button>
+          <button onClick={() => onClickDel()} className="interface-item">
+            ←
+          </button>
           <button
             onClick={() => {
               onClickOperator('÷')
