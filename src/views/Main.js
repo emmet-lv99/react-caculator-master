@@ -11,6 +11,8 @@ import '../Calculator.css'
  *Todo C 초기화 버튼 기능 구현
  *Todo 오퍼레이터 값 받아오기
  *Todo 더하기 기능을 구현해보자
+ *Todo 나머지 기능도 구현해보자
+ *Todo 삭제 기능을 구현해보자
  */
 
 const Main = () => {
@@ -46,8 +48,9 @@ const Main = () => {
         break
     }
     setVal1(tmp)
-    setResult(tmp)
     setVal2(0)
+    setResult(tmp)
+    setOperator('')
     return tmp
   }
 
@@ -69,8 +72,27 @@ const Main = () => {
   }
 
   const getEqual = () => {
-    setDisplay(makeResult())
+    if (!val1 && !val2) {
+      setResult(0)
+    } else {
+      setDisplay(makeResult())
+    }
   }
+
+  const getDel = () => {
+    if (val2 > 0) {
+      setDisplay(display.slice(0, -1))
+      setVal2(Number(val2.toString().slice(0, -1)))
+    } else if (operator) {
+      setDisplay(display.slice(0, -1))
+      setOperator('')
+      setVal2(0)
+    } else {
+      setDisplay(display.slice(0, -1))
+      setVal1(Number(val1.toString().slice(0, -1)))
+    }
+  }
+
   return (
     <>
       <header>
@@ -82,6 +104,7 @@ const Main = () => {
         <Interface
           emitNumber={getNumber}
           emitOp={getOp}
+          emitDel={getDel}
           emitEqual={getEqual}
           emitClear={getClear}
         />
