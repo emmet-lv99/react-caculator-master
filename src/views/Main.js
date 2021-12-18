@@ -11,7 +11,7 @@ import '../Calculator.css'
  *Todo C 초기화 버튼 기능 구현
  *Todo 오퍼레이터 값 받아오기
  *Todo 더하기 기능을 구현해보자
- *Todo 나머지 기능도 구현해보자
+ *Todo 나머지 연산 기능도 구현해보자
  *Todo 삭제 기능을 구현해보자
  */
 
@@ -50,7 +50,6 @@ const Main = () => {
     setVal1(tmp)
     setVal2(0)
     setResult(tmp)
-    setOperator('')
     return tmp
   }
 
@@ -89,7 +88,6 @@ const Main = () => {
       setDisplay(display.slice(0, -1))
     } else {
       setVal1(Number(val1.toString().slice(0, -1)))
-      console.log(display)
       setDisplay(display.slice(0, -1))
     }
   }
