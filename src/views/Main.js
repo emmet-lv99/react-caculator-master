@@ -16,23 +16,23 @@ import '../Calculator.css'
  *Todo del 기능은 가장 마지막에 구현
  *Todo 키보드 키 이벤트를 구현하려면 display가 input이어야 한다.
  *Todo display에 기호가 제일 먼저 들어왔을 떄 처리
+ *Todo value2는 절대 음수일 경우가 없다.
  */
 
 const Main = () => {
   const [result, setResult] = useState(0)
   const [display, setDisplay] = useState('')
   const [operator, setOperator] = useState('')
-  const [value1, setValue1] = useState(null)
-  const [value2, setValue2] = useState(null)
+  const [value1, setValue1] = useState(0)
+  const [value2, setValue2] = useState(0)
 
   const emitInterfaceDel = () => {
-    if (value2 !== null && value2 > 0) {
+    if (value2 > 0) {
       setValue2(Number(value2.toString().slice(0, -1)))
       setDisplay(display.slice(0, -1))
     } else if (operator) {
       setDisplay(display.slice(0, -1))
       setOperator('')
-      setValue2(null)
     } else {
       setValue1(Number(value1.toString().slice(0, -1)))
       setDisplay(display.slice(0, -1))
@@ -48,8 +48,13 @@ const Main = () => {
   }
   const emitInterfaceVal = num => {
     setDisplay(display + num.toString())
-    if (operator && value1 > 0) {
-      setValue2(value2 * 10 + num)
+    if (operator) {
+      if (value1 === 0) {
+        setValue2(value2 * 10 + num)
+        setDisplay(value1 + operator + num)
+      } else {
+        setValue2(value2 * 10 + num)
+      }
     } else {
       setValue1(value1 * 10 + num)
     }
@@ -81,19 +86,16 @@ const Main = () => {
 
   const emitInterfaceOp = op => {
     if (operator) {
-      if (value2 !== null && value2 > 0) {
-        makeResult()
+      if (value2 > 0) {
         setDisplay(makeResult() + op)
-      } else {
-        setDisplay(display.slice(0, -1) + op)
-      }
-    } else {
-      if (value1 !== null && value1 > 0) {
-        setDisplay(display + op)
         setOperator(op)
       } else {
-        window.alert('숫자를 입력해주세요')
+        setDisplay(display.slice(0, -1) + op)
+        setOperator(op)
       }
+    } else {
+      setDisplay(display + op)
+      setOperator(op)
     }
   }
 
