@@ -75,21 +75,22 @@ const Main = () => {
     if (!val1 && !val2) {
       setResult(0)
     } else {
-      setDisplay(makeResult())
+      setDisplay(makeResult().toString())
     }
   }
 
   const getDel = () => {
     if (val2 > 0) {
-      setDisplay(display.slice(0, -1))
       setVal2(Number(val2.toString().slice(0, -1)))
-    } else if (operator) {
       setDisplay(display.slice(0, -1))
+    } else if (operator) {
       setOperator('')
       setVal2(0)
-    } else {
       setDisplay(display.slice(0, -1))
+    } else {
       setVal1(Number(val1.toString().slice(0, -1)))
+      console.log(display)
+      setDisplay(display.slice(0, -1))
     }
   }
 
